@@ -1,5 +1,11 @@
 ﻿///$tab Change Log
 /*
+1.0.4 - 22/10/14
+----------------
+* Fixed bug with friemds code using incorrect cursor (from followers).			
+* Created _ThisReload and _NextReload versions of vNextAllowed[Follower|Friend]IDsRequest, vNextCursor[Follower|Friend]IDs variables and all are now shown in UI.
+* Changed required version check to 1.5.6.3.
+
 1.0.3 - 12/05/14
 ----------------
 * UserLookupById now uses a processParamsSync file (rather than concatenating all user ids into the URL which resulted in URLs too long to be processed).
@@ -33,7 +39,7 @@ SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
 SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
 
 // The account we want to get all follower ids for.
-let vUserName = 'qvsource';
+let vUserName = 'cocacola';
 
 // Can be anything you like to distinguish this app from other apps which might 
 // be reloading at the same time.
@@ -99,7 +105,7 @@ sub CheckQVSourceStatus
     
 	let currentVersionAsInt = (peek('Version_Major', 0, 'QVSourceStatus') * 1000) + (peek('Version_Minor', 0, 'QVSourceStatus') * 100) + (peek('Version_Build', 0, 'QVSourceStatus') * 10) + peek('Version_Revision', 0, 'QVSourceStatus');
  
-    if(currentVersionAsInt < 1533) then
+    if(currentVersionAsInt < 1563) then
         // Log message here or send email using QVSource Notifier Connector
         trace 'Version too low. Please update QVSource.';
         exit script;
@@ -153,10 +159,10 @@ sub buildFollowersQVD
 		FROM 'Post_FollowerIds_Info.qvd' (qvd);
 		
 		let vTmp = Peek('Post_FollowerIds_Info_utc_reset', 0, 'Post_FollowerIds_Info');
-		let vNextAllowedFollowerIDsRequest = timestamp#('$(vTmp)', 'DD-MM-YYYY hh:mm:ss');
-		let vNextCursorFollowerIDs = Peek('Post_FollowerIds_Info_next_cursor', 0, 'Post_FollowerIds_Info');
+		let vNextAllowedFollowerIDsRequest_ThisReload = timestamp#('$(vTmp)', 'DD-MM-YYYY hh:mm:ss');
+		let vNextCursorFollowerIDs_ThisReload = Peek('Post_FollowerIds_Info_next_cursor', 0, 'Post_FollowerIds_Info');
 		
-		let vIsOK = vNextAllowedFollowerIDsRequest > utc();
+		let vIsOK = vNextAllowedFollowerIDsRequest_ThisReload > utc();
 		
 		drop table Post_FollowerIds_Info;
 	
@@ -164,15 +170,18 @@ sub buildFollowersQVD
 	
 	IF(vIsOK <> -1) then
 	
-		IF(vNextCursorFollowerIDs = '0') then
+		IF(vNextCursorFollowerIDs_ThisReload = '0') then
 			trace 'Retrieved all available (next_cursor is zero)';
 		ELSE
+		
+			trace 'About to request follower ids with cursor=$(vNextCursorFollowerIDs_ThisReload)';
+			
 			FollowerIds:
 			LOAD Distinct
 				'$(vUserName)' as Following,
 			    id as FollowerIds_id
 			FROM
-			[http://localhost:$(vQVSourcePort)/QVSource/TwitterConnectorV2/?table=FollowerIds&appID=$(vAppId)&userName=$(vUserName)&requestStamp=$(vRequestStamp)&cursor=$(vNextCursorFollowerIDs)]
+			[http://localhost:$(vQVSourcePort)/QVSource/TwitterConnectorV2/?table=FollowerIds&appID=$(vAppId)&userName=$(vUserName)&requestStamp=$(vRequestStamp)&cursor=$(vNextCursorFollowerIDs_ThisReload)]
 			(qvx);
 		
 			store FollowerIds into FollowerIds.qvd (qvd);
@@ -187,13 +196,17 @@ sub buildFollowersQVD
 			FROM
 			[http://localhost:$(vQVSourcePort)/QVSource/TwitterConnectorV2/?table=Post_FollowerIds_Info&appID=$(vAppId)&requestStamp=$(vRequestStamp)]
 			(qvx);
+
+			let vTmp = Peek('Post_FollowerIds_Info_utc_reset', 0, 'Post_FollowerIds_Info');
+			let vNextAllowedFollowerIDsRequest_NextReload = timestamp#('$(vTmp)', 'DD-MM-YYYY hh:mm:ss');
+			let vNextCursorFollowerIDs_NextReload = Peek('Post_FollowerIds_Info_next_cursor', 0, 'Post_FollowerIds_Info');
 			
 			store Post_FollowerIds_Info into Post_FollowerIds_Info.qvd (qvd);
 			
 		ENDIF
 		
 	ELSE
-		trace 'Not able to get more ids at this point - next allowed at $(vNextAllowedFollowerIDsRequest)';
+		trace 'Not able to get more ids at this point - next allowed at $(vNextAllowedFollowerIDsRequest_ThisReload)';
 	ENDIF
 	
 	//drop table FollowerIds;
@@ -226,10 +239,10 @@ sub buildFriendsQVD
 		FROM 'Post_FriendIds_Info.qvd' (qvd);
 		
 		let vTmp = Peek('Post_FriendIds_Info_utc_reset', 0, 'Post_FriendIds_Info');
-		let vNextAllowedFriendIDsRequest = timestamp#('$(vTmp)', 'DD-MM-YYYY hh:mm:ss');
-		let vNextCursorFriendIDs = Peek('Post_FriendIds_Info_next_cursor', 0, 'Post_FriendIds_Info');
+		let vNextAllowedFriendIDsRequest_ThisReload = timestamp#('$(vTmp)', 'DD-MM-YYYY hh:mm:ss');
+		let vNextCursorFriendIDs_ThisReload = Peek('Post_FriendIds_Info_next_cursor', 0, 'Post_FriendIds_Info');
 		
-		let vIsOK = vNextAllowedFriendIDsRequest > utc();
+		let vIsOK = vNextAllowedFriendIDsRequest_ThisReload > utc();
 		
 		drop table Post_FriendIds_Info;
 	
@@ -237,15 +250,17 @@ sub buildFriendsQVD
 	
 	IF(vIsOK <> -1) then
 	
-		IF(vNextCursorFriendIDs = '0') then
+		IF(vNextCursorFriendIDs_ThisReload = '0') then
 			trace 'Retrieved all available (next_cursor is zero)';
 		ELSE
+			trace 'About to request friend ids with cursor=$(vNextCursorFriendIDs_ThisReload)';
+					
 			FriendIds:
 			LOAD Distinct
 				'$(vUserName)' as Friend,
 			    id as FriendIds_id
 			FROM
-			[http://localhost:$(vQVSourcePort)/QVSource/TwitterConnectorV2/?table=FriendIds&appID=$(vAppId)&userName=$(vUserName)&requestStamp=$(vRequestStamp)&cursor=$(vNextCursorFriendIDs)]
+			[http://localhost:$(vQVSourcePort)/QVSource/TwitterConnectorV2/?table=FriendIds&appID=$(vAppId)&userName=$(vUserName)&requestStamp=$(vRequestStamp)&cursor=$(vNextCursorFriendIDs_ThisReload)]
 			(qvx);
 		
 			store FriendIds into FriendIds.qvd (qvd);
@@ -260,13 +275,17 @@ sub buildFriendsQVD
 			FROM
 			[http://localhost:$(vQVSourcePort)/QVSource/TwitterConnectorV2/?table=Post_FriendIds_Info&appID=$(vAppId)&requestStamp=$(vRequestStamp)]
 			(qvx);
+
+			let vTmp = Peek('Post_FriendIds_Info_utc_reset', 0, 'Post_FriendIds_Info');
+			let vNextAllowedFriendIDsRequest_NextReload = timestamp#('$(vTmp)', 'DD-MM-YYYY hh:mm:ss');
+			let vNextCursorFriendIDs_NextReload = Peek('Post_FriendIds_Info_next_cursor', 0, 'Post_FriendIds_Info');
 			
 			store Post_FriendIds_Info into Post_FriendIds_Info.qvd (qvd);
 			
 		ENDIF
 		
 	ELSE
-		trace 'Not able to get more ids at this point - next allowed at $(vNextAllowedFriendIDsRequest)';
+		trace 'Not able to get more ids at this point - next allowed at $(vNextAllowedFriendIDsRequest_ThisReload)';
 	ENDIF
 		
 	//drop table FriendIds;
@@ -281,7 +300,6 @@ for.
 It places these in a table named UserIDsLeftToLookup with a single UserID column.
 */
 sub buildUserIDsLeftToLookupQVD
-
 
 	if not isnull(filesize('Users.qvd')) then
 	
@@ -461,8 +479,8 @@ end sub
 ///$tab Main
 call CheckQVSourceStatus
 
-call buildFriendsQVD
 call buildFollowersQVD
+call buildFriendsQVD
 
 call buildUserIDsLeftToLookupQVD
 

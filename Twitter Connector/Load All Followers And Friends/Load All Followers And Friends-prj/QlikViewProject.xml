@@ -1,4 +1,4 @@
-﻿<!-- Last project change: 2014-02-21 11:03:12 (2014-02-21 10:03:12) -->
+﻿<!-- Last project change: 2014-10-22 17:45:59 (2014-10-22 15:45:59) -->
 <PrjQlikViewProject>
   <GLOBAL>
     <AllPropertiesFileName>AllProperties.xml</AllPropertiesFileName>
@@ -17,8 +17,8 @@
         <PrjFrameParentDef>
           <ObjectId>Document\TX01_708688934</ObjectId>
           <Rect>
-            <Left>50</Left>
-            <Top>713</Top>
+            <Left>78</Left>
+            <Top>928</Top>
             <Width>941</Width>
             <Height>238</Height>
           </Rect>
@@ -34,8 +34,8 @@
         <PrjFrameParentDef>
           <ObjectId>Document\LB04_390194685</ObjectId>
           <Rect>
-            <Left>2506</Left>
-            <Top>50</Top>
+            <Left>3163</Left>
+            <Top>44</Top>
             <Width>488</Width>
             <Height>903</Height>
           </Rect>
@@ -51,7 +51,7 @@
         <PrjFrameParentDef>
           <ObjectId>Document\LB02_484829361</ObjectId>
           <Rect>
-            <Left>2034</Left>
+            <Left>2678</Left>
             <Top>50</Top>
             <Width>450</Width>
             <Height>900</Height>
@@ -68,8 +68,8 @@
         <PrjFrameParentDef>
           <ObjectId>Document\LB01_388352191</ObjectId>
           <Rect>
-            <Left>1563</Left>
-            <Top>50</Top>
+            <Left>2194</Left>
+            <Top>47</Top>
             <Width>450</Width>
             <Height>1891</Height>
           </Rect>
@@ -87,8 +87,8 @@
           <Rect>
             <Left>72</Left>
             <Top>50</Top>
-            <Width>1581</Width>
-            <Height>669</Height>
+            <Width>1988</Width>
+            <Height>978</Height>
           </Rect>
           <MinimizedRect>
             <Left>0</Left>

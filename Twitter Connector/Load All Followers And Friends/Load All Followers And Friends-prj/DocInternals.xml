@@ -6,23 +6,20 @@
     <bool>false</bool>
     <bool>false</bool>
     <bool>false</bool>
-    <bool>false</bool>
-    <bool>false</bool>
   </AlwaysLoose>
   <FieldSrcTables>
     <String>6</String>
     <String>1</String>
-    <String>FriendIds</String>
+    <String>FollowerIds</String>
     <String>7</String>
     <String>1</String>
-    <String>FriendIds</String>
+    <String>FollowerIds</String>
     <String>8</String>
-    <String>2</String>
-    <String>Post_FriendIds_Info</String>
-    <String>Post_FollowerIds_Info</String>
+    <String>1</String>
+    <String>FriendIds</String>
     <String>9</String>
     <String>1</String>
-    <String>Post_FriendIds_Info</String>
+    <String>FriendIds</String>
     <String>10</String>
     <String>1</String>
     <String>Post_FriendIds_Info</String>
@@ -34,25 +31,10 @@
     <String>Post_FriendIds_Info</String>
     <String>13</String>
     <String>1</String>
-    <String>FollowerIds</String>
+    <String>Post_FriendIds_Info</String>
     <String>14</String>
     <String>1</String>
-    <String>FollowerIds</String>
-    <String>15</String>
-    <String>1</String>
-    <String>Post_FollowerIds_Info</String>
-    <String>16</String>
-    <String>1</String>
-    <String>Post_FollowerIds_Info</String>
-    <String>17</String>
-    <String>1</String>
-    <String>Post_FollowerIds_Info</String>
-    <String>18</String>
-    <String>1</String>
-    <String>Post_FollowerIds_Info</String>
-    <String>19</String>
-    <String>1</String>
-    <String>UserIDsLeftToLookup</String>
+    <String>Post_FriendIds_Info</String>
   </FieldSrcTables>
   <TableViewData>
     <Pos></Pos>
@@ -61,8 +43,8 @@
         <Tables>
           <TableViewTableWinSaveInfo>
             <Pos>
-              <Left>674</Left>
-              <Top>310</Top>
+              <Left>677</Left>
+              <Top>326</Top>
               <Width>258</Width>
               <Height>64</Height>
             </Pos>
@@ -79,8 +61,8 @@
           </TableViewTableWinSaveInfo>
           <TableViewTableWinSaveInfo>
             <Pos>
-              <Left>674</Left>
-              <Top>213</Top>
+              <Left>677</Left>
+              <Top>229</Top>
               <Width>249</Width>
               <Height>64</Height>
             </Pos>
@@ -88,8 +70,8 @@
           </TableViewTableWinSaveInfo>
           <TableViewTableWinSaveInfo>
             <Pos>
-              <Left>1148</Left>
-              <Top>240</Top>
+              <Left>1151</Left>
+              <Top>256</Top>
               <Width>257</Width>
               <Height>118</Height>
             </Pos>
@@ -124,8 +106,8 @@
           </TableViewTableWinSaveInfo>
           <TableViewTableWinSaveInfo>
             <Pos>
-              <Left>791</Left>
-              <Top>371</Top>
+              <Left>924</Left>
+              <Top>447</Top>
               <Width>259</Width>
               <Height>46</Height>
             </Pos>
@@ -133,8 +115,8 @@
           </TableViewTableWinSaveInfo>
           <TableViewTableWinSaveInfo>
             <Pos>
-              <Left>275</Left>
-              <Top>205</Top>
+              <Left>273</Left>
+              <Top>179</Top>
               <Width>329</Width>
               <Height>604</Height>
             </Pos>
@@ -151,8 +133,8 @@
           </TableViewTableWinSaveInfo>
           <TableViewTableWinSaveInfo>
             <Pos>
-              <Left>1004</Left>
-              <Top>102</Top>
+              <Left>1007</Left>
+              <Top>118</Top>
               <Width>362</Width>
               <Height>82</Height>
             </Pos>
@@ -177,7 +159,7 @@
     <Mode>0</Mode>
   </TableViewData>
   <Bookmarks></Bookmarks>
-  <SavedByVersion>11.20.12235.0409</SavedByVersion>
+  <SavedByVersion>11.20.12577.0409</SavedByVersion>
   <ForceBackEndMacroExecution>false</ForceBackEndMacroExecution>
   <FieldTags>
     <ScriptBased>
@@ -186,7 +168,6 @@
         <FieldNames>
           <String>$Field</String>
           <String>$Table</String>
-          <String>UserName</String>
         </FieldNames>
       </FieldTagData>
       <FieldTagData>
@@ -217,18 +198,12 @@
           <String>$Field</String>
           <String>$Table</String>
           <String>$Info</String>
+          <String>Following</String>
           <String>Friend</String>
-          <String>FriendIds_id</String>
           <String>UserName</String>
-          <String>Post_FriendIds_Info_next_cursor</String>
           <String>Post_FriendIds_Info_was_rate_limited</String>
           <String>Post_FriendIds_Info_utc_reset</String>
-          <String>Following</String>
-          <String>FollowerIds_id</String>
-          <String>Post_FollowerIds_Info_next_cursor</String>
-          <String>Post_FollowerIds_Info_was_rate_limited</String>
-          <String>Post_FollowerIds_Info_utc_reset</String>
-          <String>UserID</String>
+          <String>Post_FriendIds_Info_seconds_to_reset</String>
         </FieldNames>
       </FieldTagData>
       <FieldTagData>
@@ -237,18 +212,12 @@
           <String>$Field</String>
           <String>$Table</String>
           <String>$Info</String>
+          <String>Following</String>
           <String>Friend</String>
-          <String>FriendIds_id</String>
           <String>UserName</String>
-          <String>Post_FriendIds_Info_next_cursor</String>
           <String>Post_FriendIds_Info_was_rate_limited</String>
           <String>Post_FriendIds_Info_utc_reset</String>
-          <String>Following</String>
-          <String>FollowerIds_id</String>
-          <String>Post_FollowerIds_Info_next_cursor</String>
-          <String>Post_FollowerIds_Info_was_rate_limited</String>
-          <String>Post_FollowerIds_Info_utc_reset</String>
-          <String>UserID</String>
+          <String>Post_FriendIds_Info_seconds_to_reset</String>
         </FieldNames>
       </FieldTagData>
       <FieldTagData>
@@ -257,8 +226,9 @@
           <String>$Rows</String>
           <String>$Fields</String>
           <String>$FieldNo</String>
-          <String>Post_FriendIds_Info_seconds_to_reset</String>
-          <String>Post_FollowerIds_Info_seconds_to_reset</String>
+          <String>FollowerIds_id</String>
+          <String>FriendIds_id</String>
+          <String>Post_FriendIds_Info_next_cursor</String>
         </FieldNames>
       </FieldTagData>
       <FieldTagData>
@@ -267,8 +237,9 @@
           <String>$Rows</String>
           <String>$Fields</String>
           <String>$FieldNo</String>
-          <String>Post_FriendIds_Info_seconds_to_reset</String>
-          <String>Post_FollowerIds_Info_seconds_to_reset</String>
+          <String>FollowerIds_id</String>
+          <String>FriendIds_id</String>
+          <String>Post_FriendIds_Info_next_cursor</String>
         </FieldNames>
       </FieldTagData>
     </ScriptBased>

@@ -206,10 +206,10 @@
       <ExtendedValues></ExtendedValues>
       <StateName></StateName>
     </Frame>
-    <NoOfRows>8</NoOfRows>
-    <ColWidthLabel>822</ColWidthLabel>
+    <NoOfRows>11</NoOfRows>
+    <ColWidthLabel>1109</ColWidthLabel>
     <ColWidthDrop>42</ColWidthDrop>
-    <ColWidthData>534</ColWidthData>
+    <ColWidthData>597</ColWidthData>
     <MemberAttributes>
       <LInputBoxMemberAttributes>
         <Label>
@@ -297,10 +297,10 @@
       </LInputBoxMemberAttributes>
       <LInputBoxMemberAttributes>
         <Label>
-          <v>vNextAllowedFollowerIds</v>
+          <v>vNextAllowedFollowerIDsRequest_ThisReload</v>
         </Label>
         <Name>
-          <v>vNextAllowedFollowerIds</v>
+          <v>vNextAllowedFollowerIDsRequest_ThisReload</v>
         </Name>
         <BkgColor>
           <Mode>COLORAREA_SOLID</Mode>
@@ -325,10 +325,10 @@
       </LInputBoxMemberAttributes>
       <LInputBoxMemberAttributes>
         <Label>
-          <v>vNextCursorFollowerIDs</v>
+          <v>vNextAllowedFollowerIDsRequest_NextReload</v>
         </Label>
         <Name>
-          <v>vNextCursorFollowerIDs</v>
+          <v>vNextAllowedFollowerIDsRequest_NextReload</v>
         </Name>
         <BkgColor>
           <Mode>COLORAREA_SOLID</Mode>
@@ -353,10 +353,10 @@
       </LInputBoxMemberAttributes>
       <LInputBoxMemberAttributes>
         <Label>
-          <v>vNextCursorFriendIDs</v>
+          <v>vNextCursorFollowerIDs_ThisReload</v>
         </Label>
         <Name>
-          <v>vNextCursorFriendIDs</v>
+          <v>vNextCursorFollowerIDs_ThisReload</v>
         </Name>
         <BkgColor>
           <Mode>COLORAREA_SOLID</Mode>
@@ -381,10 +381,10 @@
       </LInputBoxMemberAttributes>
       <LInputBoxMemberAttributes>
         <Label>
-          <v>vNextAllowedFollowerIDsRequest</v>
+          <v>vNextCursorFollowerIDs_NextReload</v>
         </Label>
         <Name>
-          <v>vNextAllowedFollowerIDsRequest</v>
+          <v>vNextCursorFollowerIDs_NextReload</v>
         </Name>
         <BkgColor>
           <Mode>COLORAREA_SOLID</Mode>
@@ -409,10 +409,94 @@
       </LInputBoxMemberAttributes>
       <LInputBoxMemberAttributes>
         <Label>
-          <v>vNextAllowedFriendIDsRequest</v>
+          <v>vNextAllowedFriendIDsRequest_ThisReload</v>
         </Label>
         <Name>
-          <v>vNextAllowedFriendIDsRequest</v>
+          <v>vNextAllowedFriendIDsRequest_ThisReload</v>
+        </Name>
+        <BkgColor>
+          <Mode>COLORAREA_SOLID</Mode>
+          <Luminosity>85</Luminosity>
+          <FillDirection>COLORAREA_HORZ</FillDirection>
+          <FillPattern>COLORAREA_PATTERN1</FillPattern>
+          <PrimaryCol>
+            <Col>
+              <Red>255</Red>
+              <Green>255</Green>
+              <Blue>255</Blue>
+              <Alpha>255</Alpha>
+            </Col>
+            <IsCalculated>false</IsCalculated>
+            <ColorExpr></ColorExpr>
+          </PrimaryCol>
+          <SecondaryCol></SecondaryCol>
+          <Alpha>255</Alpha>
+        </BkgColor>
+        <TextColor></TextColor>
+        <TextAdjust>0</TextAdjust>
+      </LInputBoxMemberAttributes>
+      <LInputBoxMemberAttributes>
+        <Label>
+          <v>vNextCursorFriendIDs_NextReload</v>
+        </Label>
+        <Name>
+          <v>vNextCursorFriendIDs_NextReload</v>
+        </Name>
+        <BkgColor>
+          <Mode>COLORAREA_SOLID</Mode>
+          <Luminosity>85</Luminosity>
+          <FillDirection>COLORAREA_HORZ</FillDirection>
+          <FillPattern>COLORAREA_PATTERN1</FillPattern>
+          <PrimaryCol>
+            <Col>
+              <Red>255</Red>
+              <Green>255</Green>
+              <Blue>255</Blue>
+              <Alpha>255</Alpha>
+            </Col>
+            <IsCalculated>false</IsCalculated>
+            <ColorExpr></ColorExpr>
+          </PrimaryCol>
+          <SecondaryCol></SecondaryCol>
+          <Alpha>255</Alpha>
+        </BkgColor>
+        <TextColor></TextColor>
+        <TextAdjust>0</TextAdjust>
+      </LInputBoxMemberAttributes>
+      <LInputBoxMemberAttributes>
+        <Label>
+          <v>vNextAllowedFriendIDsRequest_NextReload</v>
+        </Label>
+        <Name>
+          <v>vNextAllowedFriendIDsRequest_NextReload</v>
+        </Name>
+        <BkgColor>
+          <Mode>COLORAREA_SOLID</Mode>
+          <Luminosity>85</Luminosity>
+          <FillDirection>COLORAREA_HORZ</FillDirection>
+          <FillPattern>COLORAREA_PATTERN1</FillPattern>
+          <PrimaryCol>
+            <Col>
+              <Red>255</Red>
+              <Green>255</Green>
+              <Blue>255</Blue>
+              <Alpha>255</Alpha>
+            </Col>
+            <IsCalculated>false</IsCalculated>
+            <ColorExpr></ColorExpr>
+          </PrimaryCol>
+          <SecondaryCol></SecondaryCol>
+          <Alpha>255</Alpha>
+        </BkgColor>
+        <TextColor></TextColor>
+        <TextAdjust>0</TextAdjust>
+      </LInputBoxMemberAttributes>
+      <LInputBoxMemberAttributes>
+        <Label>
+          <v>vNextCursorFriendIDs_ThisReload</v>
+        </Label>
+        <Name>
+          <v>vNextCursorFriendIDs_ThisReload</v>
         </Name>
         <BkgColor>
           <Mode>COLORAREA_SOLID</Mode>
